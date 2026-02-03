@@ -15,13 +15,7 @@ import java.util.stream.Collectors;
 public class OAuthWiringConfig {
     @Bean
     public ProviderRegistry providerRegistry(List<OAuthProvider> providers) {
-        Map<String, OAuthProvider> providerMap =
-                providers.stream()
-                    .collect(Collectors.toMap(
-                            OAuthProvider::getProviderId,
-                            provider -> provider
-                    ));
-        return new ProviderRegistry(providerMap);
+        return new ProviderRegistry(providers);
     }
 
     @Bean

@@ -4,8 +4,8 @@ import com.ois.oauthintegrationservice.core.token.Token;
 
 public interface OAuthProvider {
 
-    String getProviderId();
-    String buildAuthorizationUrl(String state);
-    Token exchangeAuthorizationCode(String authorizationCode);
-    Token refreshAccessToken(String refreshToken);
+    boolean supports(String providerId);
+    String buildAuthorizationUrl(String providerId, String state);
+    Token exchangeAuthorizationCode(String providerId, String authorizationCode);
+    Token refreshAccessToken(String providerId, String refreshToken);
 }

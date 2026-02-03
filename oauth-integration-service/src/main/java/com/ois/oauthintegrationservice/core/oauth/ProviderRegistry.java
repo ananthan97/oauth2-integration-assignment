@@ -1,19 +1,21 @@
 package com.ois.oauthintegrationservice.core.oauth;
 
+import java.util.List;
 import java.util.Map;
 
 public class ProviderRegistry {
-    private final Map<String, OAuthProvider> providers;
+    private final List<OAuthProvider> providers;
 
-    public ProviderRegistry(Map<String, OAuthProvider> providers) {
+    public ProviderRegistry(List<OAuthProvider> providers) {
         this.providers = providers;
     }
 
     public OAuthProvider getProvider(String providerId) {
-        OAuthProvider provider = providers.get(providerId);
-        if (provider == null) {
-            throw new IllegalArgumentException("Unsupported OAuth Provider Id: " + providerId);
-        }
-        return provider;
+        return providers.stream()
+                .filter(p -> p.supports(providerId))
+                .findFirst()
+                .orElseThrow(() ->
+                        new IllegalArgumentException("No provider with id " + providerId + " was found.")
+                        );
     }
 }

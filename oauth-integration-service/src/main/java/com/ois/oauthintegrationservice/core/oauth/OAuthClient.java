@@ -17,7 +17,7 @@ public class OAuthClient {
 
     public String getAuthorizationUrl(String providerId, String state) {
         OAuthProvider provider = providerRegistry.getProvider(providerId);
-        return provider.buildAuthorizationUrl(state);
+        return provider.buildAuthorizationUrl(providerId, state);
     }
 
     public void handleAuthorizationCallback(
@@ -25,7 +25,7 @@ public class OAuthClient {
             String authorizationCode
     ) {
         OAuthProvider provider = providerRegistry.getProvider(providerId);
-        Token token = provider.exchangeAuthorizationCode(authorizationCode);
+        Token token = provider.exchangeAuthorizationCode(providerId, authorizationCode);
         tokenStore.save(providerId, token);
     }
 
@@ -36,7 +36,7 @@ public class OAuthClient {
                 );
         if(token.isExpired()) {
             OAuthProvider provider = providerRegistry.getProvider(providerId);
-            Token refreshed = provider.refreshAccessToken(token.getRefreshToken());
+            Token refreshed = provider.refreshAccessToken(providerId, token.getRefreshToken());
             tokenStore.save(providerId, refreshed);
             return refreshed;
         }
