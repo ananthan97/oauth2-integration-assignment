@@ -14,8 +14,10 @@ import java.util.stream.Collectors;
 @Configuration
 public class OAuthWiringConfig {
     @Bean
-    public ProviderRegistry providerRegistry(List<OAuthProvider> providers) {
-        return new ProviderRegistry(providers);
+    public ProviderRegistry providerRegistry(
+            OAuthProvidersProperties properties,
+            List<OAuthProvider> providers) {
+        return new ProviderRegistry(properties, providers);
     }
 
     @Bean

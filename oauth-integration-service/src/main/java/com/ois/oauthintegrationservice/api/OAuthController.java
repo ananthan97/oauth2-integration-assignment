@@ -1,21 +1,31 @@
 package com.ois.oauthintegrationservice.api;
 
+import com.ois.oauthintegrationservice.core.apiclient.SecuredApiClient;
 import com.ois.oauthintegrationservice.core.oauth.OAuthClient;
+import com.ois.oauthintegrationservice.core.oauth.ProviderRegistry;
 import com.ois.oauthintegrationservice.core.token.Token;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/oauth")
 public class OAuthController {
     private final OAuthClient oAuthClient;
-
-    public OAuthController(OAuthClient oAuthClient) {
+    private final SecuredApiClient securedApiClient;
+    private final ProviderRegistry providerRegistry;
+    public OAuthController(
+            OAuthClient oAuthClient,
+            SecuredApiClient securedApiClient,
+            ProviderRegistry providerRegistry
+    ) {
         this.oAuthClient = oAuthClient;
+        this.securedApiClient = securedApiClient;
+        this.providerRegistry = providerRegistry;
     }
 
     @GetMapping("/authorize/{providerId}")
@@ -43,4 +53,19 @@ public class OAuthController {
         Token token = oAuthClient.getValidToken(providerId);
         return ResponseEntity.ok(token); // NOTE: Exposed only for demo/testing purposes
     }
+
+    @GetMapping("/me/{providerId}")
+    public ResponseEntity<String> callSecuredApi(
+            @PathVariable String providerId
+    ) {
+        Token token = oAuthClient.getValidToken(providerId);
+        String response = securedApiClient.callApi(providerId, token);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/providers")
+    public Set<String> providers() {
+        return providerRegistry.getProviderIds();
+    }
+
 }
