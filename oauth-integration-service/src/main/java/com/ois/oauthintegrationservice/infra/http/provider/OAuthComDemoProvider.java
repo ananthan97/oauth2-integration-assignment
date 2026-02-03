@@ -4,6 +4,8 @@ import com.ois.oauthintegrationservice.core.oauth.OAuthProvider;
 import com.ois.oauthintegrationservice.core.token.Token;
 import com.ois.oauthintegrationservice.infra.config.OAuthDemoProperties;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -44,6 +46,7 @@ public class OAuthComDemoProvider implements OAuthProvider {
         Map<String, Object> response =
             webClient.post()
                     .uri(props.getTokenURL())
+                    .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .body(BodyInserters.fromFormData("grant_type", "authorization_code")
                             .with("code", authorizationCode)
                             .with("redirect_uri", props.getRedirectUri())
@@ -63,6 +66,7 @@ public class OAuthComDemoProvider implements OAuthProvider {
         Map<String, Object> response =
             webClient.post()
                     .uri(props.getTokenURL())
+                    .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .body(BodyInserters.fromFormData("grant_type", "refresh_token")
                             .with("refresh_token", refreshToken)
                             .with("client_id", props.getClientId())
