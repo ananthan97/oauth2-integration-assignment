@@ -61,9 +61,9 @@ It cleanly separates HTTP APIs, OAuth orchestration, and provider-specific imple
 ## Layered Design
 ### API Layer - Handles HTTP requests and responses
 * Exposes OAuth endpoints:
-** /oauth/authorize/{providerId}
-** /oauth/callback/{providerId}
-** /oauth/me/{providerId}
+  * /oauth/authorize/{providerId}
+  * /oauth/callback/{providerId}
+  * /oauth/me/{providerId}
 * No OAuth logic inside controllers
 
 
