@@ -76,7 +76,15 @@ Resolves providers dynamically using providerId
 Abstracts token persistence
 * SecuredApiClient (interface)  
 Contract for calling secured APIs
-
+### Infrastructure Layer - Concrete implementations
+* DefaultOAuthProvider  
+Implements OAuth2 Authorization Code flow using WebClient
+* InMemoryTokenStore  
+Stores tokens per provider (demo-friendly, replaceable)
+* DefaultSecuredApiClient  
+Calls provider APIs using Bearer tokens
+* Configuration-driven provider metadata  
+(application.properties)
 
 
 
