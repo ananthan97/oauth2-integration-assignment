@@ -44,9 +44,10 @@ Set the following environment variables:
 ## Testing Endpoints (Browser)
 ### List configured providers - http://localhost:8080/oauth/providers
  <img width="788" height="468" alt="image" src="https://github.com/user-attachments/assets/8462c29c-6f58-4d77-a7b2-dfadd2c5d2e4" />  
+<br>
 ### Start OAuth flow - http://localhost:8080/oauth/authorize/github
-  * <img width="1429" height="905" alt="image" src="https://github.com/user-attachments/assets/5001c923-5eb4-4b4f-b4c4-78cb516f819b" />
-  * <img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/64bc674d-44ab-4569-a7a2-f6b9cd02fe7e" />
+<img width="1429" height="905" alt="image" src="https://github.com/user-attachments/assets/5001c923-5eb4-4b4f-b4c4-78cb516f819b" />
+<img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/64bc674d-44ab-4569-a7a2-f6b9cd02fe7e" />
 ### View stored token (demo only) - http://localhost:8080/oauth/token/github
 ### Call secured GitHub API - http://localhost:8080/oauth/me/github
 
