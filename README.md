@@ -53,7 +53,11 @@ Set the following environment variables:
 <br>
 
 ### View stored token (demo only) - http://localhost:8080/oauth/token/github
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/2dab1e9f-56e2-4816-aa5f-10e8812bbaab" />
+
 ### Call secured GitHub API - http://localhost:8080/oauth/me/github
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/244536b3-a16a-4f76-9319-fefb28a9593a" />
+
 
 # OAuth flow
 <img width="1536" height="1024" alt="Architecture overview" src="https://github.com/user-attachments/assets/d6967380-16f0-4b35-a72d-27af1e56387e" />
