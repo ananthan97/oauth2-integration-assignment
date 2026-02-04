@@ -49,6 +49,9 @@ Set the following environment variables:
 ### Start OAuth flow - http://localhost:8080/oauth/authorize/github
 <img width="1429" height="905" alt="image" src="https://github.com/user-attachments/assets/5001c923-5eb4-4b4f-b4c4-78cb516f819b" />
 <img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/64bc674d-44ab-4569-a7a2-f6b9cd02fe7e" />
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/8ecc681e-2165-4a32-84e0-18038408b87c" />
+<br>
+
 ### View stored token (demo only) - http://localhost:8080/oauth/token/github
 ### Call secured GitHub API - http://localhost:8080/oauth/me/github
 
