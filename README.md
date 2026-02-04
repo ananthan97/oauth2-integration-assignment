@@ -54,6 +54,20 @@ Set the following environment variables:
 <img width="443" height="576" alt="image" src="https://github.com/user-attachments/assets/caab1101-d1ad-4f28-965e-f398a6785eb8" />
 <img width="411" height="426" alt="image" src="https://github.com/user-attachments/assets/b125d459-6eba-4415-8f2b-a351b1afff6b" />
 
+# Architecture Overview
+This service is a provider-agnostic OAuth2 integration framework built using Spring Boot.
+It cleanly separates HTTP APIs, OAuth orchestration, and provider-specific implementations to allow easy onboarding of new OAuth providers.
+
+## Layered Design
+### API Layer - Handles HTTP requests and responses
+* Exposes OAuth endpoints:
+** /oauth/authorize/{providerId}
+** /oauth/callback/{providerId}
+** /oauth/me/{providerId}
+* No OAuth logic inside controllers
+
+
+
 
 
 
