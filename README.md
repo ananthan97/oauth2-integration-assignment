@@ -65,7 +65,11 @@ It cleanly separates HTTP APIs, OAuth orchestration, and provider-specific imple
   * /oauth/callback/{providerId}
   * /oauth/me/{providerId}
 * No OAuth logic inside controllers
-
+### Core Layer - Framework-agnostic domain logic
+* OAuthClient
+Orchestrates the OAuth flow (authorize, callback, refresh, token validation)
+* OAuthProvider (interface)
+Contract for OAuth providers
 
 
 
