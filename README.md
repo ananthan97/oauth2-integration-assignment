@@ -86,5 +86,15 @@ Calls provider APIs using Bearer tokens
 * Configuration-driven provider metadata  
 (application.properties)
 
+# Provider-Agnostic Design
+OAuth providers are defined purely through configuration.
+To add a new provider:
 
+* Add provider config in application.properties
+
+* Restart the application
+
+* Use /oauth/authorize/{providerId}
+
+No code changes required.
 
