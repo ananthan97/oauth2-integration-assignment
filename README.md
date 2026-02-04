@@ -70,7 +70,12 @@ It cleanly separates HTTP APIs, OAuth orchestration, and provider-specific imple
 Orchestrates the OAuth flow (authorize, callback, refresh, token validation)
 * OAuthProvider (interface)  
 Contract for OAuth providers
-
+* ProviderRegistry  
+Resolves providers dynamically using providerId
+* TokenStore (interface)  
+Abstracts token persistence
+* SecuredApiClient (interface)  
+Contract for calling secured APIs
 
 
 
