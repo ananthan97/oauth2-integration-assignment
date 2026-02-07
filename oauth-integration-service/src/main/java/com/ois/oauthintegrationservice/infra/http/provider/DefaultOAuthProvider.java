@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.Instant;
 import java.util.Map;
@@ -34,12 +35,21 @@ public class DefaultOAuthProvider implements OAuthProvider {
     @Override
     public String buildAuthorizationUrl(String providerId, String state) {
         var p = props.getProviders().get(providerId);
-        return p.getAuthUrl() +
-                "?response_type=code" +
-                "&client_id=" + p.getClientId() +
-                "&redirect_uri=" + p.getRedirectUri() +
-                "&scope=" + p.getScope() +
-                "&state=" + state;
+        return UriComponentsBuilder
+                .fromUriString(p.getAuthUrl())
+                .queryParam("response_type", "code")
+                .queryParam("client_id", p.getClientId())
+                .queryParam("redirect_uri", p.getRedirectUri())
+                .queryParam("scope", p.getScope())
+                .queryParam("state", state)
+                .encode()
+                .toUriString();
+//        return p.getAuthUrl() +
+//                "?response_type=code" +
+//                "&client_id=" + p.getClientId() +
+//                "&redirect_uri=" + p.getRedirectUri() +
+//                "&scope=" + p.getScope() +
+//                "&state=" + state;
     }
 
     @Override

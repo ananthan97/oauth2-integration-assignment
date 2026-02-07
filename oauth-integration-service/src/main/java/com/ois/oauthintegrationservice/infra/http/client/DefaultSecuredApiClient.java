@@ -17,7 +17,7 @@ public class DefaultSecuredApiClient implements SecuredApiClient {
     public String callApi(String providerId, Token token) {
         var provider = props.getProviders().get(providerId);
 
-        String apiUrl = provider.getApiBaseUrl() + "/user";
+        String apiUrl = provider.getApiBaseUrl();
         return webClient.get()
                 .uri(apiUrl)
                 .headers(h -> h.setBearerAuth(token.getAccessToken()))
